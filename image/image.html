@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JPEG images</title>
+</head>
+<style>
+    #text{
+        padding: 10px;
+        margin-left: 32%;
+        margin-top: 20%;
+        border-radius: 5px;
+    }
+</style>
+<body>
+    <button onclick="startimagechange()" style="opacity: 0.0;" >start image background changing</button>
+    <div id="text"></div>
+    <script>
+        const images= [
+            'url("1.jpg")',
+            'url("2.jpg")',
+            'url("3.jpeg")',
+            'url("4.jpg")'
+        ];
+        const texts = ["first image","second image","third image","fourth image"]
+        let currentindex = 0;
+        let intervalid;
+        function startimagechange(){
+            intervalid = setInterval(changebackgroundimage, 1000);
+        }
+
+        function changebackgroundimage(){
+            document.body.style.backgroundImage = images[currentindex];
+            document.body.style.backgroundSize= "cover";
+            document.getElementById("text").innertext = texts[currentindex];
+            currentindex = (currentindex + 1) % images.length;
+        }
+    </script>
+</body>
+</html>
